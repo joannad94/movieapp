@@ -1,24 +1,44 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import axios from "axios";
+import Search from "./components/Search";
+import Results from "./components/Results";
 
 function App() {
+  const [state, setState] = useState({
+    query: "",
+    results: [],
+    selected: {},
+  });
+  const apiurl =
+    "https://api.themoviedb.org/3/search/movie?api_key=59b3036760639d53bfc449c761da9443";
+
+  const search = (e) => {
+    if (e.key === "Enter") {
+      axios(apiurl + "&query=" + state.query).then(({ data }) => {
+        let results = data.results;
+        setState((prevState) => {
+          return { ...prevState, results: results };
+        });
+      });
+    }
+  };
+
+  const handleInput = (e) => {
+    let query = e.target.value;
+
+    setState((prevState) => {
+      return { ...prevState, query: query };
+    });
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <h1>Movie Database</h1>
       </header>
+      <main>
+        <Search handleInput={handleInput} search={search} />
+        <Results results={state.results} />
+      </main>
     </div>
   );
 }
