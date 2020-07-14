@@ -6,7 +6,7 @@ const Search = ({ handleInput, search }) => {
       <input
         type="text"
         className="searchbox"
-        placeholder="search for a movie..."
+        placeholder="szukaj filmu..."
         onChange={handleInput}
         onKeyPress={search}
       />
