@@ -22,7 +22,10 @@ function Popup({ selected, closePopup }) {
           />
           <p>{selected.overview}</p>
           <br />
-          <a href={`https://www.imdb.com/title/${selected.imdb_id}/`}>
+          <a
+            href={`https://www.imdb.com/title/${selected.imdb_id}/`}
+            target="blank"
+          >
             Zobacz na IMDB
           </a>
         </div>

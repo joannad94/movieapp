@@ -9,6 +9,7 @@ function App() {
     query: "",
     results: [],
     selected: {},
+    page: 0,
   });
   const apiurl =
     "https://api.themoviedb.org/3/search/movie?api_key=59b3036760639d53bfc449c761da9443";
@@ -17,14 +18,15 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      axios(apiurl + "&query=" + state.query + "&language=pl").then(
-        ({ data }) => {
-          let results = data.results;
-          setState((prevState) => {
-            return { ...prevState, results: results };
-          });
-        }
-      );
+      axios(apiurl + "&query=" + state.query).then(({ data }) => {
+        let results = data.results;
+        setState((prevState) => {
+          return {
+            ...prevState,
+            results: results,
+          };
+        });
+      });
     }
   };
 
@@ -52,6 +54,21 @@ function App() {
       return { ...prevState, selected: {} };
     });
   };
+
+  const nextPage = () => {
+    axios(apiurl + "&query=" + state.query + "&page=" + state.page + 1).then(
+      ({ data }) => {
+        let results = data.results;
+        setState((prevState) => {
+          return {
+            ...prevState,
+            results: [...state.results, ...results],
+          };
+        });
+      }
+    );
+  };
+
   return (
     <div className="App">
       <header>
@@ -66,6 +83,7 @@ function App() {
         ) : (
           false
         )}
+        <button onClick={nextPage}>Pokaż więcej</button>
       </main>
     </div>
   );
