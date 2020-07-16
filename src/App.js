@@ -5,12 +5,11 @@ import Results from "./components/Results";
 import Popup from "./components/Popup";
 
 function App() {
-  const [state, setState] = useState({
-    query: "",
-    results: [],
-    selected: {},
-    page: 0,
-  });
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [selected, setSelected] = useState(null);
+  const [page, setPage] = useState(1);
+
   const apiurl =
     "https://api.themoviedb.org/3/search/movie?api_key=59b3036760639d53bfc449c761da9443";
 
@@ -18,55 +17,38 @@ function App() {
 
   const search = (e) => {
     if (e.key === "Enter") {
-      axios(apiurl + "&query=" + state.query).then(({ data }) => {
-        let results = data.results;
-        setState((prevState) => {
-          return {
-            ...prevState,
-            results: results,
-          };
-        });
+      axios(apiurl + "&query=" + query).then(({ data }) => {
+        setResults(data.results);
       });
     }
   };
 
   const handleInput = (e) => {
     let query = e.target.value;
-
-    setState((prevState) => {
-      return { ...prevState, query: query };
-    });
+    setQuery(query);
   };
 
   const openPopup = (id) => {
     axios(
       `https://api.themoviedb.org/3/movie/${id}?api_key=${apikey}&language=pl`
     ).then(({ data }) => {
-      let result = data;
-
-      setState((prevState) => {
-        return { ...prevState, selected: result };
-      });
+      setSelected(data);
     });
   };
   const closePopup = () => {
-    setState((prevState) => {
-      return { ...prevState, selected: {} };
-    });
+    setSelected(null);
   };
 
-  const nextPage = () => {
-    axios(apiurl + "&query=" + state.query + "&page=" + state.page + 1).then(
-      ({ data }) => {
-        let results = data.results;
-        setState((prevState) => {
-          return {
-            ...prevState,
-            results: [...state.results, ...results],
-          };
-        });
-      }
-    );
+  const getNextPage = () => {
+    console.group(page);
+    const nextPage = page + 1;
+    setPage(nextPage);
+    console.log(page);
+
+    axios(apiurl + "&query=" + query + "&page=" + page + 1).then(({ data }) => {
+      const updatedResults = [...results, ...data.results];
+      setResults(updatedResults);
+    });
   };
 
   return (
@@ -76,14 +58,11 @@ function App() {
       </header>
       <main>
         <Search handleInput={handleInput} search={search} />
-        <Results results={state.results} openPopup={openPopup} />
+        <Results results={results} openPopup={openPopup} />
 
-        {typeof state.selected.title != "undefined" ? (
-          <Popup selected={state.selected} closePopup={closePopup} />
-        ) : (
-          false
-        )}
-        <button onClick={nextPage}>Pokaż więcej</button>
+        {selected && <Popup selected={selected} closePopup={closePopup} />}
+
+        {results.length && <button onClick={getNextPage}>Pokaż więcej</button>}
       </main>
     </div>
   );
