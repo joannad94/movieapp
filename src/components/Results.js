@@ -10,7 +10,7 @@ function Results({ results, openPopup }) {
             title={result.title}
             key={result.id}
             image={result.poster_path}
-            vote_average={result.vote_average}
+            popularity={result.popularity}
             vote_count={result.vote_count}
             result={result}
             openPopup={openPopup}
