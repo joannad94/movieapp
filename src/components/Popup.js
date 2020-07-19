@@ -1,4 +1,5 @@
 import React from "react";
+import "./Popup.css";
 
 function Popup({ selected, closePopup }) {
   const countries = selected.production_countries.map((country) => {
@@ -11,24 +12,28 @@ function Popup({ selected, closePopup }) {
   return (
     <section className="popup">
       <div className="content">
-        <h1>{selected.title}</h1>
-        <span> Kraj produkcji: {countries}</span>
-        <span> Rodzaj: {genres.join(" ")} </span>
+        <section className="name">
+          <h1>{selected.title}</h1>
+          <p>Kraj produkcji:</p>
+          <span className="info">{countries}</span>
+          <p>Rodzaj:</p>
+          <span className="info">{genres.join(" ")}</span>
+        </section>
 
         <div className="plot">
           <img
-            src={`https://image.tmdb.org/t/p/w300/${selected.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w200/${selected.poster_path}`}
             alt="poster"
           />
           <p>{selected.overview}</p>
           <br />
-          <a
-            href={`https://www.imdb.com/title/${selected.imdb_id}/`}
-            target="blank"
-          >
-            Zobacz na IMDB
-          </a>
         </div>
+        <a
+          href={`https://www.imdb.com/title/${selected.imdb_id}/`}
+          target="blank"
+        >
+          Zobacz na IMDB
+        </a>
 
         <button className="close" onClick={closePopup}>
           Zamknij

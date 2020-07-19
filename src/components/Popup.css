@@ -1,0 +1,95 @@
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80vw;
+    height: 90vh;
+    background-color: #314b63;
+    overflow-y: scroll;
+    border: 4px solid rgb(255, 115, 0, 0.553);
+}
+
+.popup .content {
+    display: block;
+    width: 100%;
+    min-height: 600px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    color: white;
+}
+
+.name h1 {
+    color: rgb(255, 115, 0);
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: -20px;
+    margin-bottom: 30px;
+}
+
+.name p {
+    display: block;
+    font-size: 17px;
+    color: rgb(255, 115, 0);
+}
+
+.name span {
+    display: block;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: white;
+}
+
+.popup .content .plot {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -5px 10px;
+}
+
+.popup .content .plot img {
+    max-width: 300px;
+    padding: 15px;
+}
+
+.popup .content .plot p {
+    flex: 1 1 50%;
+    padding: 15px;
+    font-size: 20px;
+    line-height: 30px;
+    letter-spacing: 1px;
+}
+
+.popup .content a {
+    padding: 15px 15px 5px 15px;
+    text-decoration: none;
+    color: white;
+    font-size: 15px;
+    transition: 0.4s ease-out;
+}
+
+.popup .content a:hover {
+    color: rgb(255, 115, 0);
+    font-size: 17px;
+    border-bottom: 2px solid white;
+}
+
+.popup .content .close {
+    display: inline-block;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #4484c4;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.4s ease-out;
+}
+
+.popup .content .close:hover {
+    background-color: rgb(255, 115, 0, 0.553);
+    color: #03417e;
+}

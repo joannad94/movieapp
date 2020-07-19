@@ -1,0 +1,46 @@
+ header {
+     padding: 50px 15px 0px;
+ }
+ 
+ header h1 {
+     font-size: 52px;
+     color: white;
+     font-weight: bold;
+     text-align: center;
+     border-bottom: 4px solid rgb(209, 121, 70, 0.5);
+ }
+ 
+ header h1::first-letter {
+     color: rgb(255, 115, 0);
+     font-size: 70px;
+ }
+ 
+ header span {
+     color: rgb(255, 115, 0)
+ }
+ 
+ .next {
+     border: 2px solid rgb(209, 121, 70, 0.5);
+     padding: 6px;
+     background-color: #223343;
+     font-size: 12px;
+     color: rgb(209, 121, 70, 0.5);
+     margin-bottom: 15px;
+     border-radius: 8px;
+     transition: 0.4s ease-out;
+ }
+ 
+ .next:hover {
+     background-color: rgb(255, 115, 0);
+     font-size: 15px;
+     color: #223343;
+     border-color: rgb(209, 121, 70, 0.5);
+     outline: none;
+ }
+ 
+ .next:focus {
+     border: 2px solid rgb(209, 121, 70, 0.5);
+     font-size: 12px;
+     background-color: rgb(209, 121, 70, 0.5);
+     outline: none;
+ }

@@ -1,0 +1,54 @@
+.results .result .poster {
+    display: flex;
+    flex-direction: column;
+    width: 33%;
+    min-width: 300px;
+    padding: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+
+.results .result .poster img {
+    height: 400px;
+    opacity: 0.5;
+    transition: 0.4s ease-out;
+}
+
+.results .result .poster img:hover {
+    border: 2px solid rgb(209, 121, 70, 0.5);
+    opacity: 1
+}
+
+.results .poster h3 {
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 10px;
+    background-color: #687886;
+    flex: 1 1 100%;
+    transition: 0.4s ease-out;
+}
+
+.results .result .poster:hover h3 {
+    background-color: #fff;
+    color: #223343;
+    font-size: 20px;
+}
+
+.results .result .info {
+    padding: 5px;
+    font-size: 12px;
+    color: rgb(85, 85, 85);
+}
+
+.results .result .info p {
+    margin: auto 0;
+    padding: 5px;
+    transition: 0.4s ease-out;
+}
+
+.results .result:hover p {
+    color: rgb(255, 115, 0);
+    font-size: 14px;
+    font-weight: bold;
+}

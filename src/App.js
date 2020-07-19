@@ -3,6 +3,9 @@ import axios from "axios";
 import Search from "./components/Search";
 import Results from "./components/Results";
 import Popup from "./components/Popup";
+import { Button } from "react-bootstrap";
+import "./App.css";
+
 
 function App() {
   const [query, setQuery] = useState("");
@@ -87,25 +90,41 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1>Baza filmów</h1>
+        <h1>
+          Szukajka filmów z <span>IMDb</span>
+          
+        </h1>
       </header>
       <main>
         {results.length > 0 && (
           <section className="sort">
-            Sortuj wg:
+            <span>Sortuj wg: </span>
             <br />
-            <button onClick={sortByPopularity}>Popularność</button>
-            <button onClick={sortByTitle}>Tytuł</button>
+
+            <Button
+              className="popularity"
+              variant="out-line-primary"
+              onClick={sortByPopularity}
+            >
+              Popularność
+            </Button>
+
+            <Button
+              className="title"
+              variant="out-line-promary"
+              onClick={sortByTitle}
+            >
+              Tytuł
+            </Button>
           </section>
         )}
-
         <Search handleInput={handleInput} search={search} />
         <Results results={results} openPopup={openPopup} />
 
         {selected && <Popup selected={selected} closePopup={closePopup} />}
 
         {results.length > 0 && (
-          <button onClick={getNextPage}>Pokaż więcej</button>
+          <button className='next' onClick={getNextPage}>Pokaż więcej</button>
         )}
       </main>
     </div>
