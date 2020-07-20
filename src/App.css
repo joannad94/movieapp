@@ -3,7 +3,7 @@
  }
  
  header h1 {
-     font-size: 52px;
+     font-size: 65px;
      color: white;
      font-weight: bold;
      text-align: center;
@@ -12,7 +12,7 @@
  
  header h1::first-letter {
      color: rgb(255, 115, 0);
-     font-size: 70px;
+     font-size: 80px;
  }
  
  header span {
@@ -43,4 +43,49 @@
      font-size: 12px;
      background-color: rgb(209, 121, 70, 0.5);
      outline: none;
+ }
+ 
+ @media (min-width: 200px) {
+     header h1 {
+         font-size: 35px;
+     }
+     header h1::first-letter {
+         font-size: 50px;
+     }
+     .next {
+         margin-left: 30px
+     }
+ }
+ 
+ @media (min-width: 360px) {
+     header h1 {
+         font-size: 35px;
+     }
+     header h1::first-letter {
+         font-size: 50px;
+     }
+ }
+ 
+ @media (min-width: 720px) {
+     header h1 {
+         font-size: 45px;
+         width: 600px;
+         margin: 0 auto;
+     }
+     header h1::first-letter {
+         font-size: 50px;
+     }
+     .next {
+         margin-left: 30px
+     }
+ }
+ 
+ @media (min-width: 1200px) {
+     header h1 {
+         font-size: 65px;
+         width: 100%;
+     }
+     header h1::first-letter {
+         font-size: 80px;
+     }
  }

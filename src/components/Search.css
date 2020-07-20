@@ -12,6 +12,7 @@ section {
 .searchbox {
     display: block;
     width: 100%;
+    margin: 0 auto;
     padding: 15px;
     border: none;
     outline: none;
@@ -33,6 +34,7 @@ section {
     color: white;
     font-size: 20px;
     margin-bottom: -10px;
+    margin-left: 10px;
 }
 
 button.popularity {
@@ -65,4 +67,62 @@ button.title:focus {
     color: white;
     border-color: rgb(255, 115, 0);
     font-size: 17px;
+}
+
+@media (min-width: 200px) {
+    .searchbox {
+        font-size: 12px;
+        margin-top: -50px;
+        padding: 10px;
+    }
+    .sort span {
+        font-size: 15px;
+        margin-bottom: -10px;
+        margin-left: 10px;
+    }
+    button.popularity {
+        font-size: 10px;
+    }
+}
+
+button.popularity:focus {
+    font-size: 12px;
+}
+
+button.title {
+    font-size: 10px;
+}
+
+button.title:focus {
+    font-size: 12px;
+}
+
+@media (min-width: 360px) {
+    .searchbox {
+        font-size: 18px;
+        margin-top: -30px;
+    }
+}
+
+@media (min-width: 720px) {
+    .searchbox {
+        font-size: 18px;
+        margin-top: -20px;
+        margin-bottom: 30px;
+    }
+    .sort span {
+        font-size: 20px;
+    }
+    button.popularity {
+        font-size: 12px;
+    }
+    button.title {
+        font-size: 12px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .searchbox {
+        font-size: 23px;
+    }
 }

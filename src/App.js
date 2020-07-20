@@ -6,7 +6,6 @@ import Popup from "./components/Popup";
 import { Button } from "react-bootstrap";
 import "./App.css";
 
-
 function App() {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
@@ -92,10 +91,11 @@ function App() {
       <header>
         <h1>
           Szukajka filmów z <span>IMDb</span>
-          
         </h1>
       </header>
       <main>
+        <Search handleInput={handleInput} search={search} />
+
         {results.length > 0 && (
           <section className="sort">
             <span>Sortuj wg: </span>
@@ -118,13 +118,15 @@ function App() {
             </Button>
           </section>
         )}
-        <Search handleInput={handleInput} search={search} />
+
         <Results results={results} openPopup={openPopup} />
 
         {selected && <Popup selected={selected} closePopup={closePopup} />}
 
         {results.length > 0 && (
-          <button className='next' onClick={getNextPage}>Pokaż więcej</button>
+          <button className="next" onClick={getNextPage}>
+            Pokaż więcej
+          </button>
         )}
       </main>
     </div>
