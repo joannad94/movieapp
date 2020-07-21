@@ -4,7 +4,7 @@ import "./Results.css";
 
 function Results({ results, openPopup }) {
   return (
-    <section className="results">
+    <div className="results">
       {results.map((result) => {
         return (
           <Result
@@ -18,7 +18,7 @@ function Results({ results, openPopup }) {
           />
         );
       })}
-    </section>
+    </div>
   );
 }
 

@@ -1,8 +1,9 @@
  header {
-     padding: 50px 15px 0px;
+     padding: 50px 20px 0px 20px;
  }
  
  header h1 {
+     margin: 0 auto;
      font-size: 65px;
      color: white;
      font-weight: bold;
@@ -17,6 +18,13 @@
  
  header span {
      color: rgb(255, 115, 0)
+ }
+ 
+ main {
+     width: 100%;
+     max-width: 960px;
+     margin: 0 auto;
+     margin-top: 100px;
  }
  
  .next {

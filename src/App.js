@@ -25,6 +25,14 @@ function App() {
     }
   };
 
+  const handleClick = (e) => {
+    axios(
+      `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${query}`
+    ).then(({ data }) => {
+      setResults(data.results);
+    });
+  };
+
   const handleInput = (e) => {
     let query = e.target.value;
     setQuery(query);
@@ -94,10 +102,15 @@ function App() {
         </h1>
       </header>
       <main>
-        <Search handleInput={handleInput} search={search} />
+        <div className="search">
+          <Search handleInput={handleInput} search={search} />
+          <button className="searchclick" onClick={handleClick}>
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
 
         {results.length > 0 && (
-          <section className="sort">
+          <div className="sort">
             <span>Sortuj wg: </span>
             <br />
 
@@ -116,7 +129,7 @@ function App() {
             >
               Tytuł
             </Button>
-          </section>
+          </div>
         )}
 
         <Results results={results} openPopup={openPopup} />
