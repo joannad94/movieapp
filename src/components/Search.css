@@ -74,3 +74,12 @@
         border-color: rgb(255, 115, 0);
         font-size: 17px;
     }
+    
+    @media(max-width:359px) {
+        .searchbox {
+            width: 80%;
+        }
+        header h1::first-letter {
+            font-size: 55px;
+        }
+    }
