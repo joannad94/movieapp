@@ -11,7 +11,7 @@ function App() {
   const [results, setResults] = useState([]);
   const [selected, setSelected] = useState(null);
   const [page, setPage] = useState(1);
-  const [sort, setSort] = useState(1);
+  const [sort, setSort] = useState(0);
 
   const apikey = `${process.env.REACT_APP_API_KEY}`;
 
@@ -32,6 +32,7 @@ function App() {
       setSelected(data);
     });
   };
+
   const closePopup = () => {
     setSelected(null);
   };
@@ -47,37 +48,20 @@ function App() {
     });
   };
 
-  const sortByPopularity = () => {
-    if (results && results.length > 0) {
-      if (sort) {
-        const revResults = results.reverse();
+  const sortMoviesBy = (type) => {
+    if (sort) {
+      const revResults = [...results].reverse();
+      setResults(revResults);
+      setSort(0);
+    } else {
+      const sortedResults = [...results].sort((a, b) =>
+        typeof a[type] === "string"
+          ? a[type].localeCompare(b[type])
+          : b[type] - a[type]
+      );
 
-        setResults(revResults);
-        setSort({ sort: -1 });
-      } else {
-        const upResults = results.sort((a, b) =>
-          a.popularity < b.popularity ? -1 : a.popularity > b.popularity ? 1 : 0
-        );
-        setResults(upResults);
-        setSort(sort);
-      }
-    }
-  };
-
-  const sortByTitle = () => {
-    if (results && results.length > 0) {
-      if (sort) {
-        const revResults = results.reverse();
-
-        setResults(revResults);
-        setSort({ sort: -1 });
-      } else {
-        const upResults = results.sort((a, b) =>
-          a.title < b.title ? -1 : a.title > b.title ? 1 : 0
-        );
-        setResults(upResults);
-        setSort(sort);
-      }
+      setResults(sortedResults);
+      setSort(1);
     }
   };
 
@@ -100,7 +84,7 @@ function App() {
               <Button
                 className="popularity"
                 variant="out-line-primary"
-                onClick={sortByPopularity}
+                onClick={() => sortMoviesBy("popularity")}
               >
                 Popularność
               </Button>
@@ -108,7 +92,7 @@ function App() {
               <Button
                 className="title"
                 variant="out-line-promary"
-                onClick={sortByTitle}
+                onClick={() => sortMoviesBy("title")}
               >
                 Tytuł
               </Button>
