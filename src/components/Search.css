@@ -1,139 +1,76 @@
-.search {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-wrap: nowrap;
-}
-
-.searchbox {
-    position: absolute;
-    left: 0%;
-    flex-basis: 800px;
-    outline: none;
-    background: none;
-    background-color: white;
-    border-radius: 8px;
-    color: rgb(105, 105, 105);
-    font-weight: 300;
-    font-size: 20px;
-    transition: 0.4s ease-out;
-}
-
-.searchbox:focus {
-    box-shadow: 0 8px 8px 0px rgb(255, 115, 0, 0.553);
-}
-
-.searchclick {
-    position: absolute;
-    flex-grow: 4;
-    right: 0%;
-    border: none;
-}
-
-i {
-    color: white;
-    font-size: 30px;
-    margin-left: 15px;
-}
-
-i:hover {
-    color: rgb(255, 115, 0);
-}
-
-.sort span {
-    display: block;
-    color: white;
-    font-size: 20px;
-    margin-bottom: -10px;
-    margin-left: 10px;
-}
-
-button.popularity {
-    font-size: 15px;
-    color: white;
-}
-
-button.popularity:hover {
-    color: rgb(255, 115, 0);
-    transition: 0.4s ease-out;
-}
-
-button.popularity:focus {
-    color: white;
-    border-color: rgb(255, 115, 0);
-    font-size: 17px;
-}
-
-button.title {
-    color: white;
-    font-size: 15px;
-    transition: 0.4s ease-out;
-}
-
-button.title:hover {
-    color: rgb(255, 115, 0);
-}
-
-button.title:focus {
-    color: white;
-    border-color: rgb(255, 115, 0);
-    font-size: 17px;
-}
-
-@media (min-width: 200px) {
     .searchbox {
-        font-size: 12px;
-        margin-top: -50px;
-        padding: 10px;
+        border-radius: 8px;
+        color: rgb(105, 105, 105);
+        font-weight: 300;
+        line-height: 50px;
+        font-size: 20px;
+        transition: 0.4s ease-out;
+        width: 100%;
+        padding: 0 5px 0 10px;
+        margin: 0 auto;
+        outline: none;
     }
+    
+    .searchbox:focus {
+        box-shadow: 0 8px 8px 0px rgb(255, 115, 0, 0.553);
+    }
+    
+    .searchclick {
+        background: none;
+        border: none;
+    }
+    
+    .searchclick:focus {
+        outline: none;
+    }
+    
+    i {
+        color: white;
+        font-size: 30px;
+        margin-left: 15px;
+    }
+    
+    i:hover {
+        color: rgb(255, 115, 0);
+    }
+    
     .sort span {
-        font-size: 15px;
-        margin-bottom: -10px;
+        display: block;
+        color: white;
+        font-size: 20px;
+        margin-top: 50px;
         margin-left: 10px;
     }
+    
     button.popularity {
-        font-size: 10px;
+        margin-left: 5px;
+        font-size: 15px;
+        color: white;
     }
-}
-
-button.popularity:focus {
-    font-size: 12px;
-}
-
-button.title {
-    font-size: 10px;
-}
-
-button.title:focus {
-    font-size: 12px;
-}
-
-@media (min-width: 360px) {
-    .searchbox {
-        font-size: 18px;
-        margin-top: -30px;
+    
+    button.popularity:hover {
+        color: rgb(255, 115, 0);
+        transition: 0.4s ease-out;
     }
-}
-
-@media (min-width: 720px) {
-    .searchbox {
-        font-size: 18px;
-        margin-top: -20px;
-        margin-bottom: 30px;
+    
+    button.popularity:focus {
+        color: white;
+        border-color: rgb(255, 115, 0);
+        font-size: 17px;
     }
-    .sort span {
-        font-size: 20px;
-    }
-    button.popularity {
-        font-size: 12px;
-    }
+    
     button.title {
-        font-size: 12px;
+        color: white;
+        font-size: 15px;
+        transition: 0.4s ease-out;
     }
-}
-
-@media (min-width: 1200px) {
-    .searchbox {
-        font-size: 23px;
+    
+    button.title:hover {
+        color: rgb(255, 115, 0);
     }
-}
+    
+    button.title:focus {
+        color: white;
+        border-color: rgb(255, 115, 0);
+        font-size: 17px;
+    }

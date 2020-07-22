@@ -3,7 +3,7 @@ import axios from "axios";
 import Search from "./components/Search";
 import Results from "./components/Results";
 import Popup from "./components/Popup";
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import "./App.css";
 
 function App() {
@@ -15,27 +15,14 @@ function App() {
 
   const apikey = `${process.env.REACT_APP_API_KEY}`;
 
-  const search = (e) => {
-    if (e.key === "Enter") {
-      axios(
-        `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${query}`
-      ).then(({ data }) => {
-        setResults(data.results);
-      });
-    }
-  };
+  const getMoviesFromApi = (inputQuery) => {
+    setQuery(inputQuery);
 
-  const handleClick = (e) => {
     axios(
-      `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${query}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&query=${inputQuery}`
     ).then(({ data }) => {
       setResults(data.results);
     });
-  };
-
-  const handleInput = (e) => {
-    let query = e.target.value;
-    setQuery(query);
   };
 
   const openPopup = (id) => {
@@ -102,45 +89,42 @@ function App() {
         </h1>
       </header>
       <main>
-        <div className="search">
-          <Search handleInput={handleInput} search={search} />
-          <button className="searchclick" onClick={handleClick}>
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
+        <Container>
+          <Search getMoviesFromApi={getMoviesFromApi} />
 
-        {results.length > 0 && (
-          <div className="sort">
-            <span>Sortuj wg: </span>
-            <br />
+          {results.length > 0 && (
+            <div className="sort">
+              <span>Sortuj wg: </span>
+              <br />
 
-            <Button
-              className="popularity"
-              variant="out-line-primary"
-              onClick={sortByPopularity}
-            >
-              Popularność
-            </Button>
+              <Button
+                className="popularity"
+                variant="out-line-primary"
+                onClick={sortByPopularity}
+              >
+                Popularność
+              </Button>
 
-            <Button
-              className="title"
-              variant="out-line-promary"
-              onClick={sortByTitle}
-            >
-              Tytuł
-            </Button>
-          </div>
-        )}
+              <Button
+                className="title"
+                variant="out-line-promary"
+                onClick={sortByTitle}
+              >
+                Tytuł
+              </Button>
+            </div>
+          )}
 
-        <Results results={results} openPopup={openPopup} />
+          <Results results={results} openPopup={openPopup} />
 
-        {selected && <Popup selected={selected} closePopup={closePopup} />}
+          {selected && <Popup selected={selected} closePopup={closePopup} />}
 
-        {results.length > 0 && (
-          <button className="next" onClick={getNextPage}>
-            Pokaż więcej
-          </button>
-        )}
+          {results.length > 0 && (
+            <button className="next" onClick={getNextPage}>
+              Pokaż więcej
+            </button>
+          )}
+        </Container>
       </main>
     </div>
   );
