@@ -15,7 +15,7 @@
     }
     
     .results .result .poster img:hover {
-        border: 2px solid rgb(209, 121, 70, 0.5);
+        border: 1px solid rgb(209, 121, 70, 0.5);
         opacity: 1
     }
     
@@ -25,14 +25,12 @@
         font-weight: bold;
         padding: 10px;
         background-color: #687886;
-        flex: 1 1 100%;
         transition: 0.4s ease-out;
     }
     
     .results .result .poster:hover h3 {
         background-color: #fff;
         color: #223343;
-        font-size: 20px;
     }
     
     .results .result .info {
@@ -48,7 +46,6 @@
     
     .results .result:hover p {
         color: rgb(255, 115, 0);
-        font-size: 14px;
         font-weight: bold;
     }
     
